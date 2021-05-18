@@ -1,8 +1,8 @@
 
 <?php
     
-    include ("layout/header.php");
-    require ("component/accounts.php");
+    include "layout/header.php";
+    require "component/accounts.php";
 
     $accounts = get_accounts();
 
@@ -49,5 +49,5 @@
 </div>
 
 <?php
-    include ("layout/footer.php");
+    include "layout/footer.php";
 ?>

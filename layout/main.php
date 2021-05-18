@@ -1,6 +1,6 @@
 
 <?php 
-    require ("component/accounts.php");
+    require "component/accounts.php";
     $accounts = get_accounts();
 ?>
 
@@ -11,7 +11,7 @@
     <div class="row ">
         <?php foreach($accounts as $index => $account) : ?>
 
-            <div class="col-12 col-md-6 my-5">
+            <div class="col-12 col-md-6 col-lg-4 my-5">
                 <div class="card h-100">
                     <div class="card-header">
                         Compte

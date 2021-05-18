@@ -35,20 +35,20 @@
 
 <body>
 
-  <!-- <?php include("component/layer.php"); ?> -->
+  <?php include "component/layer.php"; ?>
 
   <div id="bodyShow">
 
-    <?php include("layout/nav.php"); ?>
+    <?php include "layout/nav.php"; ?>
 
-    <?php include("layout/header.php"); ?>
+    <?php include "layout/header.php"; ?>
 
     <?php 
       
-      include("layout/main.php"); 
+      include "layout/main.php"; 
     ?>
 
-    <?php include("layout/footer.php"); ?>
+    <?php include "layout/footer.php"; ?>
 
   </div>  
 
