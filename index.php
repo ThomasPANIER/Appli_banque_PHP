@@ -1,70 +1,54 @@
-<!doctype html>
-<html class="no-js" lang="fr">
 
-<head>
-  <meta charset="utf-8">
-  <title>BPR</title>
-  <meta name="description" content="Banque pour Riches">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php 
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
+  require "model/connexion.php";
+  require "model/accounts.php";
 
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-  <link rel="shortcut icon" type="image/x-icon" href="img/logo_BPR_light.ico">
+  session_start();
+  if(!isset($_SESSION["user"])) {
+    header("Location:login.php");
+    exit;
+  }
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
+  $accounts = get_accounts();
 
-  <meta name="theme-color" content="#fafafa">
-</head>
+  include "layout/header.php";
 
-<body>
+?>
 
-  <div id="layer" class="container-fluid">
-    <p id="layerP">
-      <h5 class="fw-bold fs-3">Information importante</h5>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu porta tortor. 
-      Ut ultrices quam vel nunc scelerisque, in egestas justo mattis. 
-      Donec efficitur ornare neque, vitae varius leo tempus ut. 
-      Aliquam ullamcorper egestas nulla, eu consequat ligula imperdiet in. Aenean a leo dui. 
-      Integer lacinia sit amet ipsum et tincidunt. Donec consequat turpis eget purus consequat malesuada. 
-      Morbi consequat semper laoreet. Nam id arcu sit amet purus dapibus pharetra. 
-    </p>
-    <button class="bodyHidden btn btn-danger col-3" onclick="closeLayer();">J'ai compris</button>
-  </div>
+<main class="container-fluid my-5">
 
-  <div id="bodyShow">
+    <h2 class="text-center">Comptes bancaires</h2>
 
-    <?php include("layout/nav.php"); ?>
+    <div class="row ">
+        <?php foreach($accounts as $index => $account) : ?>
 
-    <?php include("layout/header.php"); ?>
+            <div class="col-12 col-md-6 col-lg-4 my-5">
+                <div class="card h-100">
+                    <div class="card-header">
+                        Compte
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <?php foreach($account as $key => $value) : ?>
+                                <li class="list-group-item"><?php echo "$key : $value" ; ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <div class=" row justify-content-evenly">
+                            <a class="btn btn-primary col-3 p-1" href="singleAccount.php?index=<?php echo $index; ?>">Voir</a>
+                            <a class="btn btn-primary col-5 p-1" href="#">Dépot/Retrait</a>            
+                            <a class="btn btn-primary col-3 p-1" href="#">Cloture</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <?php include("layout/main.php"); ?>
+        <?php endforeach; ?>
 
-    <?php include("layout/footer.php"); ?>
+    </div>
 
-  </div>  
+</main>
 
-
-
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
-
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview');
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
-</body>
-
-</html>
+<?php include "layout/footer.php"; ?>
