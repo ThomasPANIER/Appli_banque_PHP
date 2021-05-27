@@ -1,6 +1,7 @@
 
 <?php
 
+    require "model/connexion.php";
     include "layout/header.php";
 
     if(!empty($_POST)) {
@@ -43,7 +44,6 @@
         <?php endif; ?>
 
     </section>
-
 
 </div>
 
