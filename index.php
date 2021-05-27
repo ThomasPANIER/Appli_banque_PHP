@@ -3,6 +3,7 @@
 
   require "model/connexion.php";
   require "model/accounts.php";
+  require "model/accountModel.php";
 
   session_start();
   if(!isset($_SESSION["user"])) {
@@ -10,7 +11,7 @@
     exit;
   }
 
-  $accounts = get_accounts();
+  $accounts = getAccount($db);
 
   include "layout/header.php";
 
@@ -37,7 +38,7 @@
                     </div>
                     <div class="card-footer">
                         <div class=" row justify-content-evenly">
-                            <a class="btn btn-primary col-3 p-1" href="singleAccount.php?index=<?php echo $index; ?>">Voir</a>
+                            <a class="btn btn-primary col-3 p-1" href="singleAccountcopy.php?index=<?php echo $index; ?>">Voir</a>
                             <a class="btn btn-primary col-5 p-1" href="#">Dépot/Retrait</a>            
                             <a class="btn btn-primary col-3 p-1" href="#">Cloture</a>
                         </div>
