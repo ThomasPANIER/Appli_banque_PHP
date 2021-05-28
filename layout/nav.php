@@ -23,7 +23,7 @@
                     <li><a class="dropdown-item" href="newAccount.php">Ouvrir un compte</a></li>
                     <li><a class="dropdown-item" href="#">Another action</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="singleUser.php">Mes informations</a></li>
                     </ul>
                 </li>
 
@@ -37,8 +37,9 @@
             </ul>
 
             <form class="d-flex">
-                <?php if(isset($_SESSION["user"])): ?>
+                <?php if(!isset($_SESSION["user"])): ?>
                     <a class="btn btn-success mx-2" href="login.php" type="submit">connexion</a>
+                    <a class="btn btn-success mx-2" href="newUser.php" type="submit">Créer un compte</a>
                 <?php endif; ?>
                 <a class="btn btn-danger mx-2" href="logout.php" type="submit">deconnexion</a>
             </form>

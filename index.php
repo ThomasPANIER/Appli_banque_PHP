@@ -2,7 +2,6 @@
 <?php 
 
   require "model/connexion.php";
-  require "model/accounts.php";
   require "model/accountModel.php";
 
   session_start();
@@ -11,8 +10,8 @@
     exit;
   }
 
-  $accounts = getAccount($db);
-
+  $accounts = getAccounts($db, $_SESSION["user"]["id"]);
+  //$account = getAccount($db);
   include "layout/header.php";
 
 ?>
@@ -31,14 +30,14 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <?php foreach($account as $key => $value) : ?>
-                                <li class="list-group-item"><?php echo "$key : $value" ; ?></li>
-                            <?php endforeach; ?>
+                        <?php foreach($account as $key => $value) : ?>
+                            <li class="list-group-item"><?php echo "$key : $value" ; ?></li>
+                        <?php endforeach; ?>
                         </ul>
                     </div>
                     <div class="card-footer">
                         <div class=" row justify-content-evenly">
-                            <a class="btn btn-primary col-3 p-1" href="singleAccountcopy.php?index=<?php echo $index; ?>">Voir</a>
+                            <a class="btn btn-primary col-3 p-1" href="singleAccount.php?index=<?php echo $index; ?>">Voir</a>
                             <a class="btn btn-primary col-5 p-1" href="#">Dépot/Retrait</a>            
                             <a class="btn btn-primary col-3 p-1" href="#">Cloture</a>
                         </div>
@@ -53,3 +52,4 @@
 </main>
 
 <?php include "layout/footer.php"; ?>
+

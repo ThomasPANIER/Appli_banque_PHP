@@ -3,9 +3,9 @@
 
     require "model/connexion.php";
     include "layout/header.php";
-    require "model/accountModel.php";
+    require "model/accounts.php";
 
-    $accounts = getAccount($db);
+    $accounts = get_accounts();
 
     if(isset($_GET["index"]) && isset($accounts[$_GET["index"]])) {
         $account = $accounts[$_GET["index"]];
@@ -50,7 +50,7 @@
         <div class="alert alert-secondary text-center" role="alert">
             <?php echo $error; ?>
             <p>Pourquoi ne pas retourner a l'accueil</p>
-            <a class="btn btn-dark text-white" href="index.php">Accueil</a>
+            <a class="btn btn-dark text-white" href="../index/index.php">Accueil</a>
         </div>
 
     <?php endif; ?>

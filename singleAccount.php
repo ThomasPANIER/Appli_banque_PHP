@@ -3,9 +3,9 @@
 
     require "model/connexion.php";
     include "layout/header.php";
-    require "model/accounts.php";
+    require "model/accountModel.php";
 
-    $accounts = get_accounts();
+    $accounts = viewAccount($db);
 
     if(isset($_GET["index"]) && isset($accounts[$_GET["index"]])) {
         $account = $accounts[$_GET["index"]];
@@ -20,7 +20,7 @@
 
     <?php if(isset($account)): ?>
 
-        <div class="col-12 col-md-6 my-5">
+        <div class="col-12 col-md-6 my-5 p-4 m-auto">
 
             <div class="card h-100">
                 <div class="card-header">
@@ -50,7 +50,7 @@
         <div class="alert alert-secondary text-center" role="alert">
             <?php echo $error; ?>
             <p>Pourquoi ne pas retourner a l'accueil</p>
-            <a class="btn btn-dark text-white" href="../index/index.php">Accueil</a>
+            <a class="btn btn-dark text-white" href="index.php">Accueil</a>
         </div>
 
     <?php endif; ?>
