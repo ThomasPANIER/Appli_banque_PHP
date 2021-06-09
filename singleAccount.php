@@ -11,7 +11,7 @@
     if(isset($_GET["id"]) && !empty($_GET["id"])) {
         $account = viewAccount($db, $_GET["id"], $_SESSION["user"]["id"]);
         if(!$account) {
-            $error = "voleur";
+            $error = "On ne regarde pas le compte des autres";
         }
 
     }

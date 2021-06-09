@@ -3,6 +3,7 @@
 
     require "connexion.php";
 
+
     function getUserByEmail(PDO $db, string $email) {
         $query = $db->prepare("SELECT * FROM client WHERE email=:email");
         $query->execute([
