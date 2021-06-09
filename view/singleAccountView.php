@@ -3,7 +3,7 @@
 
 <div class="row">
 
-    <?php if(isset($account)): ?>
+    <?php if($account): ?>
 
         <div class="col-12 col-md-6 my-5 p-4 m-auto">
 

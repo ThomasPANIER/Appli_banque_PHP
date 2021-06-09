@@ -1,14 +1,18 @@
 
 <?php
 
+    session_start();
     require "model/connexion.php";
     require "model/accountModel.php";
+    
 
     
 
     if(isset($_GET["id"]) && !empty($_GET["id"])) {
-        $account = viewAccount($db, $_GET["id"]);
-        
+        $account = viewAccount($db, $_GET["id"], $_SESSION["user"]["id"]);
+        if(!$account) {
+            $error = "voleur";
+        }
 
     }
     else {

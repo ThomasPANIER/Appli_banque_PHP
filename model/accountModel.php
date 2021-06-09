@@ -12,17 +12,7 @@
         return $accounts;
     }
 
-    // function getAccount($db) {
-    //     $query = $db->query("CREATE TEMPORARY TABLE tmp_compte LIKE compte");
-    //     $query = $db->query("SELECT type_compte as 'Type', 
-    //                         nom as Nom, 
-    //                         solde as Solde 
-    //                         FROM compte");
-    //     $account = $query->fetchAll(PDO::FETCH_ASSOC);
-    //     return $account;
-    // }
-
-    function viewAccount(PDO $db, $id) {
+    function viewAccount(PDO $db, $id, $id_client) {
         $query = $db->prepare(
             "SELECT type_compte as 'Type', 
             nom as Nom, 
@@ -30,11 +20,13 @@
             solde as Solde, 
             commentaire as Commentaire 
             FROM compte
-            WHERE id=:id"
+            WHERE id=:id
+            AND id_client=:id_client"
         
-            );
+        );
         $query->execute([
-            "id" => $id
+            "id" => $id,
+            "id_client" => $id_client
         ]);
         $account = $query->fetch(PDO::FETCH_ASSOC);
         return $account;  
