@@ -12,4 +12,13 @@
         return $result;        
     }
 
+    function getUserInfos(PDO $db, int $id) {
+        $query = $db->prepare("SELECT * FROM client WHERE id=:id_client");
+        $query->execute([
+            "id_client" => $id
+        ]);
+        $accounts = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $accounts;
+    }
+
 ?>

@@ -2,7 +2,8 @@
 <?php 
 
     require "model/connexion.php";
-    require "model/accountModel.php";
+    require "model/userModel.php";
+    
 
     session_start();
     if(!isset($_SESSION["user"])) {
@@ -10,10 +11,9 @@
         exit;
     }
 
-    $accounts = getAccounts($db, $_SESSION["user"]["id"]);
-    //$account = getAccount($db);
+    $infos = getUserInfos($db, $_SESSION["user"]["id"]);
 
-    require "view/indexView.php";
-
+    require "view/singleUserView.php";
 ?>
+
 

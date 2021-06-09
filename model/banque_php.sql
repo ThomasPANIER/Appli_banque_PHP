@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS Compte (
     type_compte VARCHAR(15) NOT NULL,
     nom VARCHAR(15) NOT NULL,
     date_ouverture DATE NOT NULL,
-    date_fermeture TIMESTAMP,
+    date_fermeture DATE,
     solde NUMERIC(11,2) NOT NULL,
     -- operation NUMERIC,
     commentaire TEXT,
@@ -78,12 +78,12 @@ VALUES
 ('Deritchold', 'Picsou', 'bd', 'des richous', 'ROUEN', 76000, 'picsouderitchold@gmail.com', 'm', '2021-02-15', '1975-11-21', 'tresriche'),
 ('Misérable', 'Cosette', 'rue', 'des sansdents', 'ROUEN', 76000, 'miserablecosette@gmail.com', 'f', '2021-04-23', '1977-06-18', 'trespauvre');
 
-INSERT INTO Compte (id_client, type_compte, nom, date_ouverture, solde)
+INSERT INTO Compte (id_client, type_compte, nom, date_ouverture, solde, date_fermeture)
 VALUES 
-(1, 'Livret', 'PEL', '2021-02-15', 61200),
-(1, 'Livret', 'Livret A', '2021-02-15', 22950),
-(1, 'Compte', 'Compte courant', '2021-02-15', 29875647.54),
-(2, 'Compte', 'Compte courant', '2021-04-23', 247.97);
+(1, 'Livret', 'PEL', '2021-02-15', 61200, NULL),
+(1, 'Livret', 'Livret A', '2021-02-15', 22950, NULL),
+(1, 'Compte', 'Compte courant', '2021-02-15', 29875647.54, NULL),
+(2, 'Compte', 'Compte courant', '2021-04-23', 247.97, NULL);
 
 INSERT INTO Operation (type_operation, montant, date_operation, nom, id_compte, id_client)
 VALUES
