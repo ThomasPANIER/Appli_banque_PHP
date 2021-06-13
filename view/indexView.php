@@ -1,9 +1,5 @@
 
-<?php 
-
-include "layout/header.php"; 
-
-?>
+<?php include "layout/header.php"; ?>
 
 <main class="container-fluid my-5">
 
@@ -19,21 +15,22 @@ include "layout/header.php";
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                        <?php foreach($account as $key => $value) : ?>
-                            <li class="list-group-item"><?php echo "$key : $value" ; ?></li>
-                        <?php endforeach; ?>
+                            <li class="list-group-item"><?php echo "Type : " . $account->getType_compte() ; ?></li>
+                            <li class="list-group-item"><?php echo "Nom : " . $account->getNom() ; ?></li>
+                            <li class="list-group-item"><?php echo "Date d'ouverture : " . $account->getDate_ouverture() ; ?></li>
+                            <li class="list-group-item"><?php echo "Solde : " . $account->getSolde() . " euro" ; ?></li>
                         </ul>
                     </div>
                     <div class="card-footer">
                         <div class=" row justify-content-evenly">
-                            <a class="btn btn-primary col-3 p-1" href="singleAccount.php?id=<?php echo $account["id"]; ?>">Voir</a>
+                            <a class="btn btn-primary col-3 p-1" href="singleAccount.php?id=<?php echo $account->getId() ; ?>">Voir</a>
                         </div>
                     </div>
                 </div>
             </div>
 
         <?php endforeach; ?>
-
+        
     </div>
 
 </main>

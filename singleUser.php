@@ -1,19 +1,25 @@
 
 <?php 
 
-    require "model/connexion.php";
-    require "model/userModel.php";
-    
+require "model/bddConnect.php";
+require "model/userModel.php";
+require "model/entity/user.php";
 
-    session_start();
-    if(!isset($_SESSION["user"])) {
-        header("Location:login.php");
-        exit;
-    }
+session_start();
+if(!isset($_SESSION["user"])) {
+    header("Location:login.php");
+    exit;
+}
 
-    $infos = getUserInfos($db, $_SESSION["user"]["id"]);
+$userConnect = $_SESSION["user"];
 
-    require "view/singleUserView.php";
+$userModel = new UserModel();
+$infos = $userModel->getUserInfos($userConnect->getId());
+
+//$infos = getUserInfos($_SESSION["user"]["id"]);
+
+require "view/singleUserView.php";
+
 ?>
 
 

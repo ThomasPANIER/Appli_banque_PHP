@@ -1,17 +1,18 @@
 
 <?php
 
-abstract class Bdd {
+abstract class BddConnect {
 
     const HOST  = "localhost";
     const NAME = "banque_php";
     const LOGIN = "root";
     const PASSWORD = "";
 
-    public static function bdd() {
+    static public function bddConnect() {
         try {
             $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-            $db = new PDO('mysql:host=' . self::HOST . ';dbname=' . self::NAME . ';charset=utf8,' . self::LOGIN .',' . self::PASSWORD);
+            //$db = new PDO('mysql:host=localhost;dbname=banque_php;charset=utf8', 'root', '');
+            $db = new PDO("mysql:host=" . self::HOST .";dbname=" . self::NAME , self::LOGIN, self::PASSWORD);
             return $db;
         }
 
