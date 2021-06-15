@@ -14,6 +14,9 @@ include "layout/header.php";
 
         <div class="col-12 col-md-6 p-5">
             <h2>Créer un compte</h2>
+            <?php if(isset($error)){
+                echo $error;
+            } ?>
             
             <form class="mt-5" action="newAccount.php" method="POST">
                 <!-- <div class="form-check">
@@ -41,17 +44,7 @@ include "layout/header.php";
             </form>
         </div>
 
-        <div class="col-12 col-md-6 p-5">
-            <h3 class="mb-5">Vos informations</h3>
-            <?php if(!empty($_POST)): ?>
-                <ul class="list-group my-3">
-                    <li class="list-group-item" id="infoCompte"><?php echo "Type de compte : " . $_POST["type_compte"]; ?></li>
-                    <li class="list-group-item"><?php echo "Nom : " . $_POST["nom"]; ?></li>
-                    <li class="list-group-item"><?php echo "Solde : " . $_POST["solde"] . " euro"; ?></li>
-                    <a class="btn btn-dark text-white my-2" href="index.php">Retour page des comptes</a>
-                </ul>
-            <?php endif; ?>
-        </div>
+        
 
     </section>
 

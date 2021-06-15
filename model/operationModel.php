@@ -39,22 +39,27 @@ class OperationModel extends BddConnect {
     //     return $operation;
     // }
 
-    public function getOperation($id, $id_client) {
+
+    public function getOperation($id_compte) {
 
         $query = $this->getDb()->prepare(
             "SELECT * 
             FROM operation
             WHERE id_compte=:id
-            AND id_client=:id_client"
+            ORDER BY id DESC"
         );
         $query->execute([
-            "id" => $id,
-            "id_client" => $id_client
+            "id" => $id_compte
         ]);
         $operation = $query->fetch(PDO::FETCH_ASSOC);
-        $operation = new Operation($operation);
+        if ($operation) {
+            $operation = new Operation($operation);
+        }
         return $operation;
+        
     }
+
+
 
 
 }

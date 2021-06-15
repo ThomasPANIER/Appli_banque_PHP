@@ -1,7 +1,7 @@
 
 <?php
 
-class AccountModel extends BddConnect {
+class AccountModel  {
 
     private PDO $_db;
 
@@ -48,7 +48,9 @@ class AccountModel extends BddConnect {
             "id_client" => $id_client
         ]);
         $account = $query->fetch(PDO::FETCH_ASSOC);
-        $account = new Account($account);
+        if ($account) {
+            $account = new Account($account);
+        }
         return $account;
     }
 

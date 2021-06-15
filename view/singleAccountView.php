@@ -23,6 +23,7 @@
                 <div class="card-header">
                     Dernières opérations
                 </div>
+                <?php if($operation) : ?>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><?php echo "Type d'opération : " . $operation->getType_operation() ; ?></li>
@@ -30,6 +31,7 @@
                         <li class="list-group-item"><?php echo "Montant : " . $operation->getMontant() . " euro" ; ?></li>
                     </ul>
                 </div>
+                <?php endif; ?>
                 <div class="card-footer">
                     <form class=" row justify-content-around" method="POST">
                         <a class="btn btn-primary col-3 p-1" href="#">Dépot</a>

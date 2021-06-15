@@ -57,10 +57,10 @@ else {
 
 if(isset($_POST['confirm'])) {
     $account = $accountModel->deleteAccount($_GET["id"]);
-    echo '<meta http-equiv="refresh" content="0;index.php"/>';
-    if(!$account) {
-        //throw new Exception("Le compte n'existe plus");
-        $error = "Le compte n'existe plus";
+    //echo '<meta http-equiv="refresh" content="0;index.php"/>';
+    if($account) {
+        header("Location: index.php");
+        exit;
     }
 }
     
